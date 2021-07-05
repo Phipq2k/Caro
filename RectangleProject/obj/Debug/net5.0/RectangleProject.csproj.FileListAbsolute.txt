@@ -1,0 +1,16 @@
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\obj\Debug\net5.0\RectangleProject.GeneratedMSBuildEditorConfig.editorconfig
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\obj\Debug\net5.0\RectangleProject.AssemblyInfoInputs.cache
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\obj\Debug\net5.0\RectangleProject.AssemblyInfo.cs
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\obj\Debug\net5.0\RectangleProject.csproj.CoreCompileInputs.cache
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\bin\Debug\net5.0\RectangleProject.exe
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\bin\Debug\net5.0\RectangleProject.deps.json
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\bin\Debug\net5.0\RectangleProject.runtimeconfig.json
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\bin\Debug\net5.0\RectangleProject.runtimeconfig.dev.json
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\bin\Debug\net5.0\RectangleProject.dll
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\bin\Debug\net5.0\ref\RectangleProject.dll
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\bin\Debug\net5.0\RectangleProject.pdb
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\obj\Debug\net5.0\RectangleProject.dll
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\obj\Debug\net5.0\ref\RectangleProject.dll
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\obj\Debug\net5.0\RectangleProject.pdb
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\obj\Debug\net5.0\RectangleProject.genruntimeconfig.cache
+D:\NIIE-hk3-2021\Appdev\project\Assignment\RectangleProject\obj\Debug\net5.0\RectangleProject.csproj.AssemblyReference.cache
