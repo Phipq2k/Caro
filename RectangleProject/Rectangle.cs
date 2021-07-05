@@ -44,13 +44,12 @@ namespace RectangleProject
 
         public double Acreage()
         {
-            return Math.Abs((point2.X - point1.X) * (point3.Y - point1.Y) - (point3.X - point1.X) * (point2.Y - point1.Y));
+            return Math.Abs((point2.X - point1.X) * (point3.Y - point1.Y) - (point3.X - point1.X) * (point2.Y - point1.Y)) / 2;
         }
 
         public String checkRectangleType()
         {
-            String result = "";
-
+            String result;
             double space1 = point1.Space2Point(point2.X, point2.Y);
             double space2 = point2.Space2Point(point3.X, point3.Y);
             double space3 = point1.Space2Point(point3.X, point3.Y);
@@ -68,7 +67,14 @@ namespace RectangleProject
                     }
                     else
                     {
-                        result = "Tam giac nhon";
+                        if (Math.Sqrt(Math.Pow(space1, 2) + Math.Pow(space2, 2)) < space3 || Math.Sqrt(Math.Pow(space2, 2) + Math.Pow(space3, 2)) < space1 || Math.Sqrt(Math.Pow(space1, 2) + Math.Pow(space3, 2)) < space2)
+                        {
+                            result = "Tam giac tu";
+                        }
+                        else
+                        {
+                            result = "Tam giac nhon";
+                        }
                     }                
                 } 
             }
