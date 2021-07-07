@@ -32,11 +32,13 @@ namespace RectangleProject
             Point2D C = new Point2D(xC, yC);
 
 
-            double AB = A.Space2Point(B.X, B.Y);
-            double BC = B.Space2Point(C.X, C.Y);
-            double AC = A.Space2Point(C.X, C.Y);
+            double AB = A.Space2Point(B);
+            double BC = B.Space2Point(C);
+            double AC = A.Space2Point(C);
 
             Rectangle rectangle = new Rectangle(A,B,C);
+
+            Constant constant = new Constant(rectangle.checkRectangleType());
 
 
             #endregion
@@ -52,11 +54,12 @@ namespace RectangleProject
             Console.WriteLine(String.Format("Diem doi xung qua Ox cua A: {0}", A.OSymmetry()));*/
 
 
-            Console.WriteLine(String.Format("AB: {0}cm \nBC: {1}cm \nAC: {2}cm", Math.Round(AB), Math.Round(BC), Math.Round(AC)));
+            Console.WriteLine(String.Format("AB: {0}cm \nBC: {1}cm \nAC: {2}cm", Math.Round(AB,2), Math.Round(BC,2), Math.Round(AC,2)));
 
-            Console.WriteLine(rectangle.checkRectangleType());
+           /* Console.WriteLine(rectangle.checkRectangleType());*/
+            Console.WriteLine(constant.Type());
 
-            Console.WriteLine(String.Format("Chu vi: {0}cm, Dien tich: {1}cm", Math.Round(rectangle.Perimeter(),2), Math.Round(rectangle.Acreage(),2)));
+            Console.WriteLine(String.Format("Chu vi: {0}cm, Dien tich: {1}cm2", Math.Round(rectangle.Perimeter(),2), Math.Round(rectangle.Acreage(),2)));
 
             #endregion
         }

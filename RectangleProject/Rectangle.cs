@@ -12,11 +12,14 @@ namespace RectangleProject
         private Point2D point2;
         private Point2D point3;
 
-
-
         internal Point2D Point1 { get => point1; set => point1 = value; }
         internal Point2D Point2 { get => point2; set => point2 = value; }
         internal Point2D Point3 { get => point3; set => point3 = value; }
+
+        public Rectangle()
+        {
+
+        }
 
         public Rectangle(Point2D point1, Point2D point2, Point2D point3)
         {
@@ -25,66 +28,77 @@ namespace RectangleProject
             this.Point3 = point3;
         }
 
+        public double Space1{ get => point1.Space2Point(point2); }
+        public double Space2 { get => point2.Space2Point(point3); }
+        public double Space3 { get => point1.Space2Point(point3); }
+        
+
         #region Methods
         public bool isRectangle()
         {
-            double space1 = point1.Space2Point(point2.X, point2.Y);
-            double space2 = point2.Space2Point(point3.X, point3.Y);
-            double space3 = point1.Space2Point(point3.X, point3.Y);
-            return space1 + space2 > space3 && space2 + space3 > space1 && space1 + space3 > space2;
+            return Space1 + Space2 > Space3 && Space2 + Space3 > Space1 && Space1 + Space3 > Space2;
         }
 
         public double Perimeter()
         {
-            double space1 = point1.Space2Point(point2.X, point2.Y);
-            double space2 = point2.Space2Point(point3.X, point3.Y);
-            double space3 = point1.Space2Point(point3.X, point3.Y);
-            return space1 + space2 + space3;
+            return Space1 + Space2 + Space3;
         }
 
         public double Acreage()
         {
-            return Math.Abs((point2.X - point1.X) * (point3.Y - point1.Y) - (point3.X - point1.X) * (point2.Y - point1.Y)) / 2;
+            double p = Perimeter() / 2;
+            return Math.Sqrt(p * (p - Space1) * (p - Space2) * (p - Space3));
         }
 
-        public String checkRectangleType()
+        /// <summary>
+        /// Có 6 loại tam giác:
+        /// 0 = Tam giác tu
+        /// 1 = Tam giác nhon
+        /// 2 = Tam giác can
+        /// 3 = Tam giác vuong
+        /// 4 = Tam giác deu
+        /// 5 = Tam giác vuong can
+        /// </summary>
+        /// <returns></returns>
+        public int checkRectangleType()
         {
-            String result;
-            double space1 = point1.Space2Point(point2.X, point2.Y);
-            double space2 = point2.Space2Point(point3.X, point3.Y);
-            double space3 = point1.Space2Point(point3.X, point3.Y);
+            int type = 0;
             if (isRectangle())
-            {
-                if (space1 == space2 || space2 == space3 || space3 == space1)
+            { 
+                if (Math.Sqrt(Math.Pow(Space1, 2) + Math.Pow(Space2, 2)) < Space3 || Math.Sqrt(Math.Pow(Space2, 2) + Math.Pow(Space3, 2)) < Space1 || Math.Sqrt(Math.Pow(Space1, 2) + Math.Pow(Space3, 2)) < Space2)
                 {
-                    result = "Tam giac can";
+                    type = 0;
+                }
+                else if (Math.Sqrt(Math.Pow(Space1, 2) + Math.Pow(Space2, 2)) > Space3 && Math.Sqrt(Math.Pow(Space2, 2) + Math.Pow(Space3, 2)) > Space1 && Math.Sqrt(Math.Pow(Space1, 2) + Math.Pow(Space3, 2)) > Space2)
+                {
+                    type = 1;
+                }
+
+                else if (Space1 == Space2 || Space2 == Space3 || Space1 == Space3)
+                {
+                    type = 2;
+                }
+                else if (Math.Sqrt(Math.Pow(Space1, 2) + Math.Pow(Space2, 2)) == Space3 || Math.Sqrt(Math.Pow(Space2, 2) + Math.Pow(Space3, 2)) == Space1 || Math.Sqrt(Math.Pow(Space1, 2) + Math.Pow(Space3, 2)) == Space2)
+                {
+                    type = 3;
+                }
+
+                else if (Space1 == Space2 && Space1 == Space3)
+                {
+                    type = 4;
                 }
                 else
                 {
-                    if (Math.Sqrt(Math.Pow(space1, 2) + Math.Pow(space2, 2)) == space3 || Math.Sqrt(Math.Pow(space2, 2) + Math.Pow(space3, 2)) == space1 || Math.Sqrt(Math.Pow(space1, 2) + Math.Pow(space3, 2)) == space2)
-                    {
-                        result = "Tam giac vuong";
-                    }
-                    else
-                    {
-                        if (Math.Sqrt(Math.Pow(space1, 2) + Math.Pow(space2, 2)) < space3 || Math.Sqrt(Math.Pow(space2, 2) + Math.Pow(space3, 2)) < space1 || Math.Sqrt(Math.Pow(space1, 2) + Math.Pow(space3, 2)) < space2)
-                        {
-                            result = "Tam giac tu";
-                        }
-                        else
-                        {
-                            result = "Tam giac nhon";
-                        }
-                    }                
-                } 
+                    type = 5;
+                }
             }
             else
             {
-                result = "Khong phai tam giac";
+                type = -1;
             }
-                         
-            return result;
+            return type;
         }
+
 
         public void OxSRectangle()
         {

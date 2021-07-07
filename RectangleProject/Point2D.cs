@@ -11,7 +11,11 @@ namespace RectangleProject
         private double x;
         private double y;
 
-        public Point2D(double x, double y)
+        public Point2D() {
+        
+        }
+
+        public Point2D(double x = 0, double y = 0)
         {
             this.X = x;
             this.Y = y;
@@ -24,37 +28,37 @@ namespace RectangleProject
 
 
         //Khoảng cách giữa 2 điểm
-        public double Space2Point(double x1, double y1)
+        public double Space2Point(Point2D b)
         {
-            double space2Point = Math.Sqrt(Math.Pow(x1 - x, 2) + Math.Pow(y1 - y, 2));
+            double space2Point = Math.Sqrt(Math.Pow(b.X - x, 2) + Math.Pow(b.Y - y, 2));
             return space2Point;
         }
 
         //Điểm đối xứng qua OX
-        public String OxSymmetry()
+        public Point2D OxSymmetry()
         {
             double xSymetryOX, ySymetryOX;
-            xSymetryOX = 2 * x - x;
+            xSymetryOX = x;
             ySymetryOX = -y;
-            return String.Format("Point2D'({0},{1})", xSymetryOX, ySymetryOX);
+            return new Point2D(xSymetryOX, ySymetryOX);
         }
 
         //Điểm đối xứng qua OY
-        public String OySymmetry()
+        public Point2D OySymmetry()
         {
             double xSymetryOY, ySymetryOY;
             xSymetryOY = -x;
-            ySymetryOY = 2 * y - y;
-            return String.Format("Point2D'({0},{1})", xSymetryOY, ySymetryOY);
+            ySymetryOY = y;
+            return new Point2D(xSymetryOY, ySymetryOY);
         }
 
         //Điểm đối xứng qua O
-        public String OSymmetry()
+        public Point2D OSymmetry()
         {
             double xSymetryO, ySymetryO;
             xSymetryO = -x;
             ySymetryO = -y;
-            return String.Format("Point2D'({0},{1})", xSymetryO, ySymetryO);
+            return new Point2D(xSymetryO, ySymetryO);
         }
         #endregion
     }
