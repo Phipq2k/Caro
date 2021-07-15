@@ -60,13 +60,13 @@ namespace GameCaro
             this.pnlChessBoard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlChessBoard.Location = new System.Drawing.Point(12, 31);
             this.pnlChessBoard.Name = "pnlChessBoard";
-            this.pnlChessBoard.Size = new System.Drawing.Size(513, 542);
+            this.pnlChessBoard.Size = new System.Drawing.Size(722, 722);
             this.pnlChessBoard.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Location = new System.Drawing.Point(546, 31);
+            this.panel2.Location = new System.Drawing.Point(753, 31);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(261, 261);
             this.panel2.TabIndex = 1;
@@ -77,7 +77,7 @@ namespace GameCaro
             this.pcbAvatar.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.pcbAvatar.BackgroundImage = global::GameCaro.Properties.Resources.Avatar_caro2;
             this.pcbAvatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcbAvatar.Location = new System.Drawing.Point(546, 31);
+            this.pcbAvatar.Location = new System.Drawing.Point(753, 31);
             this.pcbAvatar.Name = "pcbAvatar";
             this.pcbAvatar.Size = new System.Drawing.Size(261, 261);
             this.pcbAvatar.TabIndex = 0;
@@ -92,16 +92,16 @@ namespace GameCaro
             this.panel3.Controls.Add(this.pcbMark);
             this.panel3.Controls.Add(this.prbCoolDown);
             this.panel3.Controls.Add(this.txbLayerName);
-            this.panel3.Location = new System.Drawing.Point(546, 306);
+            this.panel3.Location = new System.Drawing.Point(753, 306);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(261, 267);
+            this.panel3.Size = new System.Drawing.Size(261, 444);
             this.panel3.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Elephant", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(21, 179);
+            this.label1.Location = new System.Drawing.Point(22, 242);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(220, 32);
             this.label1.TabIndex = 5;
@@ -155,12 +155,13 @@ namespace GameCaro
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(819, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1026, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -211,7 +212,8 @@ namespace GameCaro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 585);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1026, 755);
             this.Controls.Add(this.pcbAvatar);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -219,6 +221,8 @@ namespace GameCaro
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(1044, 802);
+            this.MinimumSize = new System.Drawing.Size(1044, 802);
             this.Name = "KingofSkyGame";
             this.Text = "KingofSky Game";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KingofSkyGame_FormClosing);

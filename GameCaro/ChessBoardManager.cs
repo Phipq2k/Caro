@@ -213,7 +213,7 @@ namespace GameCaro
 
         public bool Undo()
         {
-            if (PlayTimeLine.Count <= 0)
+            if (PlayTimeLine.Count <= 1)
             {
                 return false;
             }
@@ -228,21 +228,28 @@ namespace GameCaro
         private bool UndoAStep()
         {
 
-            PlayInfo oldpoint = PlayTimeLine.Pop();
-            Button cell = Matrix[oldpoint.Point.Y][oldpoint.Point.X];
-
-            cell.BackgroundImage = null;
-
-
-
-            if (PlayTimeLine.Count <= 0)
+            try
             {
-                CurrentPlayer = 0;
+                PlayInfo oldpoint = PlayTimeLine.Pop();
+                Button cell = Matrix[oldpoint.Point.Y][oldpoint.Point.X];
+
+                cell.BackgroundImage = null;
+
+
+
+                if (PlayTimeLine.Count <= 0)
+                {
+                    CurrentPlayer = 0;
+                }
+                else
+                {
+                    oldpoint = PlayTimeLine.Peek();
+
+                }
             }
-            else
+            catch
             {
-                oldpoint = PlayTimeLine.Peek();
-                
+               
             }
 
             ChangePlayer();

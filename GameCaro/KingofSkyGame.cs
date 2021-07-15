@@ -43,7 +43,7 @@ namespace GameCaro
 
             socket = new SocketManager();
 
-            if(btnLAN.Enabled == true)
+            if (btnLAN.Enabled == true)
             {
                 menuToolStripMenuItem.Enabled = false;
             }
@@ -74,7 +74,12 @@ namespace GameCaro
 
         }
 
-       
+        private DialogResult ErrorConnectLAN()
+        {
+            return MessageBox.Show("Lỗi kết nối mạng LAN", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2, MessageBoxOptions.ServiceNotification);
+        }
+
+
         void Quit()
         {
             Application.Exit();
@@ -82,8 +87,15 @@ namespace GameCaro
 
         void Undo()
         {
-            ChessBoard.Undo();
-            prbCoolDown.Value = 0;
+            try
+            {
+                ChessBoard.Undo();
+                prbCoolDown.Value = 0;
+            }
+            catch
+            {
+                undoToolStripMenuItem.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -96,13 +108,8 @@ namespace GameCaro
             claimADrawToolStripMenuItem.Enabled = false;
             menuToolStripMenuItem.Enabled = true;
             socket.Send(new SocketData((int)SocketCommand.CLAIMADRAWED, "", new Point()));
-           
 
-        }
 
-        private DialogResult ErrorLAN()
-        {
-            return MessageBox.Show("Không có kết nối mạng LAN!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button3);
         }
 
         private bool isCheckClaimADraw()
@@ -137,8 +144,10 @@ namespace GameCaro
             }
             catch
             {
-                Quit();
-                
+                pnlChessBoard.Enabled = false;
+                tmCoolDown.Stop();
+                ErrorConnectLAN();
+
             }
         }
 
@@ -162,24 +171,27 @@ namespace GameCaro
             pnlChessBoard.Enabled = true;
         }
 
+
         private bool isUndoLimited(int countUndoLimited)
         {
-            return countUndoLimited == Constant.UNDOLIMITED;
+            return countUndoLimited > Constant.UNDOLIMITED;
         }
         private int count = 0;
         //Đi lại
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            count++;
             if (isUndoLimited(count))
             {
                 undoToolStripMenuItem.Enabled = false;
+                
             }
             else
             {
+                count++;
                 Undo();
                 socket.Send(new SocketData((int)SocketCommand.UNDO, "", new Point()));
             }
+
 
         }
 
@@ -196,11 +208,7 @@ namespace GameCaro
 
         private void KingofSkyGame_FormClosing(object sender, FormClosingEventArgs e)
         {
-           if(btnLAN.Enabled == true)
-            {
-                ErrorLAN();
-            }
-           else
+            if (btnLAN.Enabled == false)
             {
                 if (MessageBox.Show("Bạn có muốn thoát Kingofsky Game không?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
                 {
@@ -234,6 +242,7 @@ namespace GameCaro
             if (!socket.ConnectServer())
             {
                 socket.isServer = true;
+                newGameToolStripMenuItem.Enabled = false;
                 pnlChessBoard.Enabled = true;
                 undoToolStripMenuItem.Enabled = false;
                 claimADrawToolStripMenuItem.Enabled = false;
@@ -339,7 +348,7 @@ namespace GameCaro
                     break;
                 case (int)SocketCommand.QUIT:
                     tmCoolDown.Stop();
-                    MessageBox.Show("Người chơi đã thoát");
+                    MessageBox.Show("Đối phương đã thoát");
                     break;
                 case (int)SocketCommand.CONNECTED:
                     MessageBox.Show("Đối phương đã kết nối");
