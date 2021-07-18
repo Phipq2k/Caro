@@ -66,6 +66,8 @@ namespace GameCaro
 
         private SoundPlayer soundPlayer;
 
+
+
         #endregion
 
         #region Initialize
@@ -79,8 +81,8 @@ namespace GameCaro
                 new PLayers("Player1", Image.FromFile(Application.StartupPath + "\\Resources\\X1.png")),
                 new PLayers("Player2", Image.FromFile(Application.StartupPath + "\\Resources\\O1.png"))
             };
-            
-           
+
+
         }
         #endregion
 
@@ -94,7 +96,8 @@ namespace GameCaro
 
             PlayTimeLine = new Stack<PlayInfo>();
 
-            CurrentPlayer = 0;
+            currentPlayer = 0;
+
             ChangePlayer();
 
             matrix = new List<List<Button>>();
@@ -152,14 +155,14 @@ namespace GameCaro
             MarkPlayer(cell);
 
             //Lưu trữ tọa độ của ô vào stack
-           PlayTimeLine.Push(new PlayInfo(getChessPoint(cell), CurrentPlayer));
+            PlayTimeLine.Push(new PlayInfo(getChessPoint(cell), CurrentPlayer));
 
             CurrentPlayer = CurrentPlayer == 1 ? 0 : 1;
 
             ChangePlayer();
 
             //Xử lý sự kiện người dùng click cell tác động đến progressbar
-            if(playerMarked != null)
+            if (playerMarked != null)
             {
                 playerMarked(this, new BtnClickEvent(getChessPoint(cell)));
             }
@@ -198,14 +201,15 @@ namespace GameCaro
             if (isEndgame(cell))
             {
                 endGame();
-                PlayerName.Text = PlayerName.Text == "Player1" ? "Player1" : "Player2";
+                //PlayerName.Text = PlayerName.Text == "Player1" ? "Player1" : "Player2";
+                //currentPlayer = currentPlayer == 0 ? 0 : 1;
             }
         }
 
         //Xử lý sự kiện thắng thua
         public void endGame()
         {
-            if(endedGame != null)
+            if (endedGame != null)
             {
                 endedGame(this, new EventArgs());
             }
@@ -249,7 +253,7 @@ namespace GameCaro
             }
             catch
             {
-               
+
             }
 
             ChangePlayer();
@@ -310,7 +314,7 @@ namespace GameCaro
             Point point = getChessPoint(cell);
             int countTop = 0;
             //Xét từ vị trí cell về bên trên trong 1 cột
-            for(int i = point.Y; i >= 0; i--)
+            for (int i = point.Y; i >= 0; i--)
             {
                 if (Matrix[i][point.X].BackgroundImage == cell.BackgroundImage)
                 {
@@ -321,7 +325,7 @@ namespace GameCaro
             }
             int countBottom = 0;
             //Xét từ vị trí cell về bên dưới trong 1 cột
-            for (int i = point.Y+1; i < Constant.CHESS_BOARD_WIDTH; i++)
+            for (int i = point.Y + 1; i < Constant.CHESS_BOARD_WIDTH; i++)
             {
                 if (Matrix[i][point.X].BackgroundImage == cell.BackgroundImage)
                 {
@@ -344,7 +348,7 @@ namespace GameCaro
             for (int i = 0; i <= point.X; i++)
             {
                 //Xử lý bug khi đánh cờ bị ra khỏi bàn cờ theo chiều bên trái và bên trên
-                if(point.X - i <0 || point.Y - i < 0)
+                if (point.X - i < 0 || point.Y - i < 0)
                 {
                     break;
                 }
@@ -379,7 +383,7 @@ namespace GameCaro
         {
             Point point = getChessPoint(cell);
             int countLeftBottom = 0;
-           
+
             for (int i = 0; i <= point.X; i++)
             {
                 //Xử lý bug khi đánh cờ bị ra khỏi bàn cờ theo chiều bên trái và bên duới
@@ -396,7 +400,7 @@ namespace GameCaro
                     break;
             }
             int countRightTop = 0;
-           
+
             for (int i = 1; i <= Constant.CHESS_BOARD_WIDTH - point.X; i++)
             {
                 //Xử lý bug khi đánh cờ bị ra khỏi bàn cờ theo chiều bên phải và bên trên
@@ -426,7 +430,7 @@ namespace GameCaro
             PlayerName.Text = PLayer[currentPlayer].Name;
             Mark.Image = PLayer[currentPlayer].Mark;
         }
-       
+
         #endregion
     }
 

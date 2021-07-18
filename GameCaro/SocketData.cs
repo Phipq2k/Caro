@@ -34,10 +34,10 @@ namespace GameCaro
         CLAIMADRAW,
         NEW_GAME,
         UNDO,
-        END_GAME,
+        PLAYER_1_WIN,
+        PLAYER_2_WIN,
         CLAIMADRAWED,
-        QUIT,
-        CONNECTED
+        QUIT
 
     }
 }

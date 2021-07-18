@@ -29,6 +29,9 @@ namespace GameCaro
         public static int player1Score = 0;
         public static int player2Score = 0;
 
+        //Giới hạn trận game
+        public static int BATTLE_LIMITED = 2;
+
 
 
     }

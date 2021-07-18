@@ -48,6 +48,12 @@ namespace GameCaro
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.claimADrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtScore1 = new System.Windows.Forms.TextBox();
+            this.labelPlayer1 = new System.Windows.Forms.Label();
+            this.txtScore2 = new System.Windows.Forms.TextBox();
+            this.labelPlayer2 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAvatar)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbMark)).BeginInit();
@@ -86,6 +92,11 @@ namespace GameCaro
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.labelPlayer2);
+            this.panel3.Controls.Add(this.txtScore2);
+            this.panel3.Controls.Add(this.labelPlayer1);
+            this.panel3.Controls.Add(this.txtScore1);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.btnLAN);
             this.panel3.Controls.Add(this.txbIP);
@@ -101,7 +112,7 @@ namespace GameCaro
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Elephant", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(22, 242);
+            this.label1.Location = new System.Drawing.Point(15, 357);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(220, 32);
             this.label1.TabIndex = 5;
@@ -158,7 +169,8 @@ namespace GameCaro
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem});
+            this.menuToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1026, 28);
@@ -180,7 +192,7 @@ namespace GameCaro
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
             this.newGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
@@ -188,7 +200,7 @@ namespace GameCaro
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -196,7 +208,7 @@ namespace GameCaro
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -204,9 +216,59 @@ namespace GameCaro
             // 
             this.claimADrawToolStripMenuItem.Name = "claimADrawToolStripMenuItem";
             this.claimADrawToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.claimADrawToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.claimADrawToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.claimADrawToolStripMenuItem.Text = "Claim a draw";
             this.claimADrawToolStripMenuItem.Click += new System.EventHandler(this.claimADrawToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // txtScore1
+            // 
+            this.txtScore1.Location = new System.Drawing.Point(15, 237);
+            this.txtScore1.Name = "txtScore1";
+            this.txtScore1.Size = new System.Drawing.Size(88, 27);
+            this.txtScore1.TabIndex = 6;
+            // 
+            // labelPlayer1
+            // 
+            this.labelPlayer1.AutoSize = true;
+            this.labelPlayer1.Location = new System.Drawing.Point(28, 203);
+            this.labelPlayer1.Name = "labelPlayer1";
+            this.labelPlayer1.Size = new System.Drawing.Size(57, 20);
+            this.labelPlayer1.TabIndex = 7;
+            this.labelPlayer1.Text = "Player1";
+            // 
+            // txtScore2
+            // 
+            this.txtScore2.Location = new System.Drawing.Point(147, 237);
+            this.txtScore2.Name = "txtScore2";
+            this.txtScore2.Size = new System.Drawing.Size(88, 27);
+            this.txtScore2.TabIndex = 8;
+            // 
+            // labelPlayer2
+            // 
+            this.labelPlayer2.AutoSize = true;
+            this.labelPlayer2.Location = new System.Drawing.Point(166, 203);
+            this.labelPlayer2.Name = "labelPlayer2";
+            this.labelPlayer2.Size = new System.Drawing.Size(57, 20);
+            this.labelPlayer2.TabIndex = 9;
+            this.labelPlayer2.Text = "Player2";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(53, 140);
+            this.label2.MinimumSize = new System.Drawing.Size(150, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(150, 50);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Bảng điểm";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // KingofSkyGame
             // 
@@ -257,6 +319,12 @@ namespace GameCaro
         private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem claimADrawToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.Label labelPlayer1;
+        private System.Windows.Forms.TextBox txtScore1;
+        private System.Windows.Forms.Label labelPlayer2;
+        private System.Windows.Forms.TextBox txtScore2;
+        private System.Windows.Forms.Label label2;
     }
 }
 

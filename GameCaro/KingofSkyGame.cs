@@ -19,7 +19,13 @@ namespace GameCaro
 
         SocketManager socket;
 
+        private int countUndo = 0;
+        private int countBattle = 0;
+
         #endregion
+
+        #region Events Handler Methods
+
         public KingofSkyGame()
         {
             InitializeComponent();
@@ -39,6 +45,12 @@ namespace GameCaro
             prbCoolDown.Maximum = Constant.COOL_DOWN_TIME;
             prbCoolDown.Value = 0;
 
+
+            //Điểm số
+            txtScore1.Text = Constant.player1Score.ToString();
+            txtScore2.Text = Constant.player2Score.ToString();
+
+
             tmCoolDown.Interval = Constant.COOL_DOWN_INTERVAL;
 
             socket = new SocketManager();
@@ -49,23 +61,47 @@ namespace GameCaro
             }
 
         }
-        #region Events Handler Methods
+
+        
         void EndGame()
         {
             tmCoolDown.Stop();
-            pnlChessBoard.Enabled = false;
-            undoToolStripMenuItem.Enabled = false;
-            claimADrawToolStripMenuItem.Enabled = false;
-            txbLayerName.Text = txbLayerName.Text == "Player1" ? "Player2" : "Player1";
+            pnlChessBoard.Enabled = false; 
+            claimADrawToolStripMenuItem.Enabled = false;     
+            //txbLayerName.Text = txbLayerName.Text == "Player1" ? "Player2" : "Player1";
+            if (txbLayerName.Text == "Player1")
+            {
+                newGameToolStripMenuItem.Enabled = true;
+                txbLayerName.Text = "Player2";
+                int score2 = Constant.player2Score += 1;
+                txtScore2.Text = score2.ToString();
+                socket.Send(new SocketData((int)SocketCommand.PLAYER_2_WIN, "", new Point()));
+
+            }
+            else
+            {
+                newGameToolStripMenuItem.Enabled = false;
+                txbLayerName.Text = "Player1";
+                int score1 = Constant.player1Score += 1;
+                txtScore1.Text = score1.ToString();
+                socket.Send(new SocketData((int)SocketCommand.PLAYER_1_WIN, "", new Point()));
+
+            }
             MessageBox.Show(txbLayerName.Text + " thắng");
+           
+
         }
+
+        
 
         void NewGame()
         {
+
             menuToolStripMenuItem.Enabled = true;
             prbCoolDown.Value = 0;
-            count = 0;
+            countUndo = 0;
             tmCoolDown.Stop();
+            
             //Gọi phương thức Vẽ bàn cờ trong đối tượng bàn cờ
             ChessBoard.DrawChessBoard();
             claimADrawToolStripMenuItem.Enabled = false;
@@ -158,6 +194,8 @@ namespace GameCaro
             if (prbCoolDown.Value >= prbCoolDown.Maximum)
             {
                 EndGame();
+                
+
 
             }
 
@@ -166,6 +204,11 @@ namespace GameCaro
         //Game mới
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            countBattle++;
+            if(countBattle >= Constant.BATTLE_LIMITED)
+            {
+                newGameToolStripMenuItem.Enabled = false;
+            }
             NewGame();
             socket.Send(new SocketData((int)SocketCommand.NEW_GAME, "", new Point()));
             pnlChessBoard.Enabled = true;
@@ -176,18 +219,19 @@ namespace GameCaro
         {
             return countUndoLimited > Constant.UNDOLIMITED;
         }
-        private int count = 0;
+        
+
         //Đi lại
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (isUndoLimited(count))
+            if (isUndoLimited(countUndo))
             {
                 undoToolStripMenuItem.Enabled = false;
                 
             }
             else
             {
-                count++;
+                countUndo++;
                 Undo();
                 socket.Send(new SocketData((int)SocketCommand.UNDO, "", new Point()));
             }
@@ -315,7 +359,7 @@ namespace GameCaro
                     {
                         prbCoolDown.Value = 0;
                         pnlChessBoard.Enabled = true;
-                        newGameToolStripMenuItem.Enabled = true;
+                        newGameToolStripMenuItem.Enabled = false;
                         claimADrawToolStripMenuItem.Enabled = true;
                         tmCoolDown.Start();
                         ChessBoard.OtherPlayerMark(data.Point);
@@ -343,15 +387,16 @@ namespace GameCaro
                     claimADrawToolStripMenuItem.Enabled = false;
                     MessageBox.Show("Đối phương đã đồng ý hòa");
                     break;
-                case (int)SocketCommand.END_GAME:
-                    EndGame();
+                case (int)SocketCommand.PLAYER_1_WIN:
+                    newGameToolStripMenuItem.Enabled = true;
+                    
+                    break;
+                case (int)SocketCommand.PLAYER_2_WIN:
+                    newGameToolStripMenuItem.Enabled = false;
                     break;
                 case (int)SocketCommand.QUIT:
                     tmCoolDown.Stop();
                     MessageBox.Show("Đối phương đã thoát");
-                    break;
-                case (int)SocketCommand.CONNECTED:
-                    MessageBox.Show("Đối phương đã kết nối");
                     break;
                 default:
                     break;
@@ -360,10 +405,9 @@ namespace GameCaro
             Listen();
         }
 
+
+
+
         #endregion
-
-
-
-
     }
 }
