@@ -1,8 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "dDzQFXiUl7hW8rnLl0IIltJcAlqBYOC7/yQy2nd/BiKUa3++rI6HXwNEAQu4yD366c46u0H1W7CEBJS1UEmz/Q==",
+  "dgSpecHash": "0qw+bF5OtUZrrV16llTeO9TJKt8bePKHhAYHQhh/rIhUpH9IWN1ahODvlcvvPuJ3p0xzNq2iz2SUK9cfW+Yz/A==",
   "success": true,
   "projectFilePath": "D:\\NIIE-hk3-2021\\Appdev\\project\\finalgame\\GameCaro\\GameCaro.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\circularprogressbar\\2.8.0.16\\circularprogressbar.2.8.0.16.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'CircularProgressBar 2.8.0.16' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "CircularProgressBar",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
 }

@@ -96,7 +96,7 @@ namespace GameCaro
 
         void NewGame()
         {
-
+            pnlChessBoard.BackColor = Color.White;
             menuToolStripMenuItem.Enabled = true;
             prbCoolDown.Value = 0;
             countUndo = 0;
@@ -217,7 +217,7 @@ namespace GameCaro
 
         private bool isUndoLimited(int countUndoLimited)
         {
-            return countUndoLimited > Constant.UNDOLIMITED;
+            return countUndoLimited >= Constant.UNDOLIMITED;
         }
         
 
@@ -226,11 +226,11 @@ namespace GameCaro
         {
             if (isUndoLimited(countUndo))
             {
-                undoToolStripMenuItem.Enabled = false;
-                
+                undoToolStripMenuItem.Enabled = false;    
             }
             else
             {
+               
                 countUndo++;
                 Undo();
                 socket.Send(new SocketData((int)SocketCommand.UNDO, "", new Point()));

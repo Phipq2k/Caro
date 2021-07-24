@@ -17,3 +17,6 @@ D:\NIIE-hk3-2021\Appdev\project\finalgame\GameCaro\obj\Debug\net5.0-windows\Game
 D:\NIIE-hk3-2021\Appdev\project\finalgame\GameCaro\obj\Debug\net5.0-windows\GameCaro.genruntimeconfig.cache
 D:\NIIE-hk3-2021\Appdev\project\finalgame\GameCaro\obj\Debug\net5.0-windows\GameCaro.KingofSkyGame.resources
 D:\NIIE-hk3-2021\Appdev\project\finalgame\GameCaro\obj\Debug\net5.0-windows\GameCaro.Properties.Resources.resources
+D:\NIIE-hk3-2021\Appdev\project\finalgame\GameCaro\obj\Debug\net5.0-windows\GameCaro.StartGame.resources
+D:\NIIE-hk3-2021\Appdev\project\finalgame\GameCaro\bin\Debug\net5.0-windows\CircularProgressBar.dll
+D:\NIIE-hk3-2021\Appdev\project\finalgame\GameCaro\obj\Debug\net5.0-windows\GameCaro.csproj.CopyComplete
