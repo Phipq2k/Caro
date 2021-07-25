@@ -42,7 +42,7 @@ namespace GameCaro
             // 
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.Image = global::GameCaro.Properties.Resources.close;
-            this.btnClose.Location = new System.Drawing.Point(625, 558);
+            this.btnClose.Location = new System.Drawing.Point(572, 597);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(150, 50);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -56,7 +56,7 @@ namespace GameCaro
             this.btnStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnStart.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnStart.Image = global::GameCaro.Properties.Resources.start1;
-            this.btnStart.Location = new System.Drawing.Point(321, 558);
+            this.btnStart.Location = new System.Drawing.Point(291, 597);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(150, 50);
             this.btnStart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -66,7 +66,7 @@ namespace GameCaro
             // 
             // prbLoading
             // 
-            this.prbLoading.Location = new System.Drawing.Point(271, 569);
+            this.prbLoading.Location = new System.Drawing.Point(237, 614);
             this.prbLoading.Name = "prbLoading";
             this.prbLoading.Size = new System.Drawing.Size(552, 18);
             this.prbLoading.TabIndex = 2;
@@ -76,7 +76,7 @@ namespace GameCaro
             this.txtLoading.AutoSize = true;
             this.txtLoading.BackColor = System.Drawing.Color.Transparent;
             this.txtLoading.Font = new System.Drawing.Font("VNI-Franko", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.txtLoading.Location = new System.Drawing.Point(498, 526);
+            this.txtLoading.Location = new System.Drawing.Point(467, 576);
             this.txtLoading.Name = "txtLoading";
             this.txtLoading.Size = new System.Drawing.Size(84, 20);
             this.txtLoading.TabIndex = 3;
