@@ -73,7 +73,7 @@ namespace GameCaro
                 socket.Send(new SocketData((int)SocketCommand.PLAYER_2_WIN, "", new Point()));
 
             }
-            else if(txbLayerName.Text == "Player1" && score1 <= Constant.BATTLE_LIMITED + 1)
+            else if (txbLayerName.Text == "Player1" && score1 <= Constant.BATTLE_LIMITED + 1)
             {
                 newGameToolStripMenuItem.Enabled = false;
                 txbLayerName.Text = "Player1";
@@ -403,5 +403,10 @@ namespace GameCaro
 
 
         #endregion
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ván cờ được chơi trên bàn cờ 25x25 ô vuông. Hai bên sẽ thay phiên nhau tích vào những ô vuông trên bàn cờ. Ký hiệu mỗi nước đi của từng người là X hoặc O. Người chơi sẽ phải dùng chiến thuật và kinh nghiệm để tạo thành 1 hàng ngang, dọc, chéo có 5 quân cờ của mình.Lưu ý là 5 quân cờ này không được phép chặn 2 đầu bởi các quân cờ của đối phương. Người chiến thắng là người tạo được hàng 5 đầu tiên. ", "Hướng dẫn chơi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

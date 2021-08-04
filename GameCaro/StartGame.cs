@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -8,8 +9,11 @@ namespace GameCaro
 {
     public partial class StartGame : Form
     {
+        private SoundPlayer soundBackground;
         public StartGame()
         {
+            soundBackground = new SoundPlayer(Application.StartupPath + "\\Resources\\RicadoMusic.wav");
+            soundBackground.Play();
             InitializeComponent();
             txtLoading.Hide();
             prbLoading.Hide();
@@ -36,6 +40,7 @@ namespace GameCaro
         //Loading and convert to KingofSky Form
         private async void pcbStart_Click(object sender, EventArgs e)
         {
+            soundBackground.Stop();
             btnStart.Hide();
             btnClose.Hide();
             prbLoading.Show();
