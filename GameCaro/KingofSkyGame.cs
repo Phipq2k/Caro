@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Net.NetworkInformation;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GameCaro
@@ -20,7 +14,6 @@ namespace GameCaro
         SocketManager socket;
 
         private int countUndo = 0;
-        private int countBattle = 0;
 
         #endregion
 
@@ -62,37 +55,39 @@ namespace GameCaro
 
         }
 
-        
+
         void EndGame()
         {
+            int score1 = Constant.player1Score;
+            int score2 = Constant.player2Score;
             tmCoolDown.Stop();
-            pnlChessBoard.Enabled = false; 
-            claimADrawToolStripMenuItem.Enabled = false;     
+            pnlChessBoard.Enabled = false;
+            claimADrawToolStripMenuItem.Enabled = false;
             //txbLayerName.Text = txbLayerName.Text == "Player1" ? "Player2" : "Player1";
-            if (txbLayerName.Text == "Player1")
+            if (txbLayerName.Text == "Player1" && score2 <= Constant.BATTLE_LIMITED + 1)
             {
                 newGameToolStripMenuItem.Enabled = true;
                 txbLayerName.Text = "Player2";
-                int score2 = Constant.player2Score += 1;
+                score2 = score2 += 1;
                 txtScore2.Text = score2.ToString();
                 socket.Send(new SocketData((int)SocketCommand.PLAYER_2_WIN, "", new Point()));
 
             }
-            else
+            else if(txbLayerName.Text == "Player1" && score1 <= Constant.BATTLE_LIMITED + 1)
             {
                 newGameToolStripMenuItem.Enabled = false;
                 txbLayerName.Text = "Player1";
-                int score1 = Constant.player1Score += 1;
+                score1 = score1 += 1;
                 txtScore1.Text = score1.ToString();
                 socket.Send(new SocketData((int)SocketCommand.PLAYER_1_WIN, "", new Point()));
 
             }
             MessageBox.Show(txbLayerName.Text + " thắng");
-           
+
 
         }
 
-        
+
 
         void NewGame()
         {
@@ -101,12 +96,11 @@ namespace GameCaro
             prbCoolDown.Value = 0;
             countUndo = 0;
             tmCoolDown.Stop();
-            
+
             //Gọi phương thức Vẽ bàn cờ trong đối tượng bàn cờ
             ChessBoard.DrawChessBoard();
             claimADrawToolStripMenuItem.Enabled = false;
             undoToolStripMenuItem.Enabled = false;
-
 
         }
 
@@ -146,6 +140,15 @@ namespace GameCaro
             socket.Send(new SocketData((int)SocketCommand.CLAIMADRAWED, "", new Point()));
 
 
+        }
+
+        private void DrawGame()
+        {
+            newGameToolStripMenuItem.Enabled = true;
+            tmCoolDown.Stop();
+            pnlChessBoard.Enabled = false;
+            claimADrawToolStripMenuItem.Enabled = false;
+            MessageBox.Show("Hòa cờ");
         }
 
         private bool isCheckClaimADraw()
@@ -194,7 +197,7 @@ namespace GameCaro
             if (prbCoolDown.Value >= prbCoolDown.Maximum)
             {
                 EndGame();
-                
+
 
 
             }
@@ -204,11 +207,6 @@ namespace GameCaro
         //Game mới
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            countBattle++;
-            if(countBattle >= Constant.BATTLE_LIMITED)
-            {
-                newGameToolStripMenuItem.Enabled = false;
-            }
             NewGame();
             socket.Send(new SocketData((int)SocketCommand.NEW_GAME, "", new Point()));
             pnlChessBoard.Enabled = true;
@@ -219,18 +217,18 @@ namespace GameCaro
         {
             return countUndoLimited >= Constant.UNDOLIMITED;
         }
-        
+
 
         //Đi lại
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (isUndoLimited(countUndo))
             {
-                undoToolStripMenuItem.Enabled = false;    
+                undoToolStripMenuItem.Enabled = false;
             }
             else
             {
-               
+
                 countUndo++;
                 Undo();
                 socket.Send(new SocketData((int)SocketCommand.UNDO, "", new Point()));
@@ -381,15 +379,11 @@ namespace GameCaro
                     }
                     break;
                 case (int)SocketCommand.CLAIMADRAWED:
-                    newGameToolStripMenuItem.Enabled = true;
-                    tmCoolDown.Stop();
-                    pnlChessBoard.Enabled = false;
-                    claimADrawToolStripMenuItem.Enabled = false;
-                    MessageBox.Show("Đối phương đã đồng ý hòa");
+                    DrawGame();
                     break;
                 case (int)SocketCommand.PLAYER_1_WIN:
                     newGameToolStripMenuItem.Enabled = true;
-                    
+
                     break;
                 case (int)SocketCommand.PLAYER_2_WIN:
                     newGameToolStripMenuItem.Enabled = false;

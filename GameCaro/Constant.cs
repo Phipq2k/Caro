@@ -14,7 +14,7 @@ namespace GameCaro
         public static int CHESS_HEIGHT = 30;
 
         //Kích thước của bàn cờ
-        public static int CHESS_BOARD_WIDTH = 25;
+        public static int CHESS_BOARD_WIDTH = 26;
         public static int CHESS_BOARD_HEIGHT = 25;
 
         //Mức step trong đơn vị thời gian của progressbar

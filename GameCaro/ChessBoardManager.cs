@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GameCaro
@@ -65,8 +62,6 @@ namespace GameCaro
         internal Stack<PlayInfo> PlayTimeLine { get => playTimeLine; set => playTimeLine = value; }
 
         private SoundPlayer soundPlayer;
-
-
 
         #endregion
 

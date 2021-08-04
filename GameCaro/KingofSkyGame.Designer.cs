@@ -62,18 +62,18 @@ namespace GameCaro
             // 
             // pnlChessBoard
             // 
-            this.pnlChessBoard.BackColor = System.Drawing.Color.Transparent;
+            this.pnlChessBoard.BackColor = System.Drawing.SystemColors.Control;
             this.pnlChessBoard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlChessBoard.Cursor = System.Windows.Forms.Cursors.Default;
             this.pnlChessBoard.Location = new System.Drawing.Point(12, 31);
             this.pnlChessBoard.Name = "pnlChessBoard";
-            this.pnlChessBoard.Size = new System.Drawing.Size(722, 722);
+            this.pnlChessBoard.Size = new System.Drawing.Size(752, 752);
             this.pnlChessBoard.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Location = new System.Drawing.Point(749, 31);
+            this.panel2.Location = new System.Drawing.Point(779, 31);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(261, 261);
             this.panel2.TabIndex = 1;
@@ -84,7 +84,7 @@ namespace GameCaro
             this.pcbAvatar.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.pcbAvatar.BackgroundImage = global::GameCaro.Properties.Resources.Avatar_caro2;
             this.pcbAvatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcbAvatar.Location = new System.Drawing.Point(749, 31);
+            this.pcbAvatar.Location = new System.Drawing.Point(779, 31);
             this.pcbAvatar.Name = "pcbAvatar";
             this.pcbAvatar.Size = new System.Drawing.Size(261, 261);
             this.pcbAvatar.TabIndex = 0;
@@ -105,7 +105,7 @@ namespace GameCaro
             this.panel3.Controls.Add(this.pcbMark);
             this.panel3.Controls.Add(this.prbCoolDown);
             this.panel3.Controls.Add(this.txbLayerName);
-            this.panel3.Location = new System.Drawing.Point(749, 306);
+            this.panel3.Location = new System.Drawing.Point(779, 306);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(261, 444);
             this.panel3.TabIndex = 2;
@@ -219,7 +219,7 @@ namespace GameCaro
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1022, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1052, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -279,7 +279,7 @@ namespace GameCaro
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::GameCaro.Properties.Resources.king_of_sky_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1026, 755);
+            this.ClientSize = new System.Drawing.Size(1052, 789);
             this.Controls.Add(this.pcbAvatar);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -288,8 +288,8 @@ namespace GameCaro
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(1044, 802);
-            this.MinimumSize = new System.Drawing.Size(1044, 802);
+            this.MaximumSize = new System.Drawing.Size(1074, 840);
+            this.MinimumSize = new System.Drawing.Size(1074, 840);
             this.Name = "KingofSkyGame";
             this.Text = "KingofSky Game";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KingofSkyGame_FormClosing);
