@@ -73,7 +73,7 @@ namespace GameCaro
                 socket.Send(new SocketData((int)SocketCommand.PLAYER_2_WIN, "", new Point()));
 
             }
-            else if (txbLayerName.Text == "Player1" && score1 <= Constant.BATTLE_LIMITED + 1)
+            else if (txbLayerName.Text == "Player2" && score1 <= Constant.BATTLE_LIMITED + 1)
             {
                 newGameToolStripMenuItem.Enabled = false;
                 txbLayerName.Text = "Player1";
